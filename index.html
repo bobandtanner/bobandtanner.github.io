@@ -6,6 +6,39 @@
         <title>Bobandtanner Software</title>
         <meta name="description" content="Bobandtanner Software develops mobile apps.  Our most popular app is Square Feet Calculation Utility.">
         <link rel="stylesheet" href="bootstrap-3.4.1-dist/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+        <script>
+            const SEPARATOR = '%'; // % is not allowed in base64 so I can use it to separate base64 strings
+            const ENCRYPTED_EMAIL = "gnzsdwQBooE=%XuUrSop4U+7aCg1N+DO6acNx1v2XlBbclKFNzkHcmvg=";
+            function getPassword() {
+                const input = document.getElementById("pw").value;
+                return input.toLowerCase();
+            }
+            function getDecryptedFromPassword(password) {
+                const [salt, ciphertext] = ENCRYPTED_EMAIL.split(SEPARATOR);
+                const decrypted = CryptoJS.AES.decrypt(
+                    {
+                        ciphertext: CryptoJS.enc.Base64.parse(ciphertext),
+                        salt: CryptoJS.enc.Base64.parse(salt)
+                    },
+                    password
+                );
+                return decrypted.toString(CryptoJS.enc.Utf8);
+            }
+            function showEmailButtonOnClick() {
+                const password = getPassword();
+                const decrypted = getDecryptedFromPassword(password);
+                let textToDisplay = "";
+                if(password.length === 0) {
+                    textToDisplay = "In order to see our email, you must enter the correct text in the text box above, then press the button.";
+                } else if(decrypted.length === 0) {
+                    textToDisplay = "That is not the input I was looking for.  Try again.  Hint: the correct answer is 5 letters long.";
+                } else {
+                    textToDisplay = decrypted;
+                }
+                document.getElementById("emailOutput").textContent = textToDisplay;
+            }
+        </script>
         <style>
             div {
                 font-size: 14pt;
@@ -58,9 +91,11 @@
         </div>
         <div class="container" id="contactUs">
             If you are human, you are allowed to have our email address.
-            I have not written it literally so as not to expose it to bots.
-            The part before the at is bobandtanner.
-            And we use gmail.
+            Demonstrate your humanness by typing the common name of your species in this box.
+            Then press the button.
+            <input type="password" style="width: 100%;" id="pw"><br />
+            <button onclick="showEmailButtonOnClick()">Show Email</button><br />
+            <div id="emailOutput"></div>
         </div>
     </body>
 </html>
