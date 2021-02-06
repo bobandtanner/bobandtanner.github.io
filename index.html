@@ -46,6 +46,7 @@
         </style>
         <script>
             const PAGE_PARAM_KEY = 'page';
+            const PAGE_SQFT_CALC = 'squareFeetCalculationUtility';
             const PAGE_ALGEBRA_TOOL_TUTORIAL = 'algebraToolTutorial';
             const PAGE_CONTACT_US = 'contactUs';
             const ALGEBRA_TOOL_IFRAME = '<iframe width="560" height="315" src="https://www.youtube.com/embed/v_xcK2Whn94" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
@@ -56,11 +57,16 @@
                 document.getElementById("main").style.display = "none";
                 document.getElementById("contactUs").style.display = "block";
             }
+            function showSqftCalc() {
+                document.getElementById("main").style.display = "none";
+                document.getElementById("sqftCalcContent").style.display = "block";
+            }
             function onLoad() {
                 // Do some page setup
                 document.getElementById("algebraToolTutorialLink").href = "/?" + PAGE_PARAM_KEY + "=" + PAGE_ALGEBRA_TOOL_TUTORIAL;
                 document.getElementById("contactUsLink").href = "/?" + PAGE_PARAM_KEY + "=" + PAGE_CONTACT_US;
                 document.getElementById("contactUs").style.display = "none";
+                document.getElementById("sqftCalcContent").style.display = "none";
             
                 // I am aware that this will not work in IE
                 const url = new URL(window.location.href);
@@ -69,6 +75,8 @@
                     showTutorial();
                 } else if(page === PAGE_CONTACT_US) {
                     showContactUs();
+                } else if(page === PAGE_SQFT_CALC) {
+                    showSqftCalc();
                 }
             }
         </script>
@@ -96,6 +104,14 @@
             <input type="password" style="width: 100%;" id="pw"><br />
             <button onclick="showEmailButtonOnClick()">Show Email</button><br />
             <div id="emailOutput"></div>
+        </div>
+        <div class="container" id="sqftCalcContent">
+            <p>Square Feet Calculation Utility is a specialized calculator for floor area in square feet.  The user enters numerous rectangles in feet and inches and the app calculates the area.  A web version of the app is available at <a href="https://squarefeetcalculator.neocities.org">https://squarefeetcalculator.neocities.org</a>, but it is much cheaper than the iOS app.</p>
+            <p>Unlike our other apps, this app is heavily used.  It makes about 50 app units per day.  It has received some reviews on the app store.  After this app had been on the store for 5 years, iOS 14.2 came out and this app crashes immediately when opened on iOS 14.2.  We received feedback from a user regarding the app crashing on the new iOS.  So we have developed a new version that will probably be released by the end of February 2021.</p>
+            <a href="https://apps.apple.com/app/apple-store/id1132997142?pt=118312108&ct=sqftCalc_github_1&mt=8" style="text-decoration: none;">
+                <img src="assets/ft2AppIcon23.png" width="40" height="40" style="border-radius: 10px; border: 1px solid #666666;" valign="center" alt="app icon">
+                <img src="assets/Download_on_the_App_Store_Badge_US-UK_135x40.svg" valign="center" border="0" alt="Download on the app store">
+            </a>
         </div>
     </body>
 </html>
