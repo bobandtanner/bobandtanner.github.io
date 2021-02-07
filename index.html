@@ -65,6 +65,7 @@
                 // Do some page setup
                 document.getElementById("algebraToolTutorialLink").href = "/?" + PAGE_PARAM_KEY + "=" + PAGE_ALGEBRA_TOOL_TUTORIAL;
                 document.getElementById("contactUsLink").href = "/?" + PAGE_PARAM_KEY + "=" + PAGE_CONTACT_US;
+                document.getElementById("sqftCalcLink").href = "/?" + PAGE_PARAM_KEY + "=" + PAGE_SQFT_CALC;
                 document.getElementById("contactUs").style.display = "none";
                 document.getElementById("sqftCalcContent").style.display = "none";
             
@@ -82,22 +83,27 @@
         </script>
     </head>
     <body onload="onLoad()">
-        <div class="container" id="main">
+        <div class="container">
             <h1>Bobandtanner Software</h1>
             <div class="nav">
-                <a id="homeLink" href="/">Home</a> | <a id="contactUsLink" href="#">Contact Us</a>
+                <a id="homeLink" href="/">Home</a>
+                | <a id="contactUsLink" href="#">Contact Us</a>
+                | <a id="sqftCalcLink" href="#">Square Feet Calculation Utility</a>
             </div>
-            <p>Bobandtanner Software develops mobile apps.  Currently, we have 3 mobile apps:</p>
-            <ul>
-                <li>Square Feet Calculation Utility (iOS only)</li>
-                <li>Triangle Help (iOS only)</li>
-                <li>Algebra Tool (<a href="https://winkelmantanner.github.io/algebratool/">web</a>, <a href="https://apps.apple.com/app/apple-store/id1489533838?pt=118312108&ct=bobandtanner.github.io_1&mt=8">iOS</a>, and <a href="https://play.google.com/store/apps/details?id=com.algebratoolmobile">Android</a>)</li>
-            </ul>
-            <p><i>Square Feet Calculation Utility</i> is by far the most popular.  As of February 1, 2021, a new version of <i>Square Feet Calculation Utility</i> is under development.  The old version, 1.1, was developed in 2016.  It is crashing on iOS 14.2.  The new version of <i>Square Feet Calculation Utility</i> is written completely from scratch and will be different from the old version.</p>
-            <p><i>Triangle Help</i> is a triangle solver which was developed in 2016 following <i>Square Feet Calculation Utility</i>.  It does not calculate area and it is not designed to complement <i>Square Feet Calculation Utility</i>.</p>
-            <p><i>Algebra Tool</i> is a human-driven computer algegra system.  It lets the human make decisions but it does not allow mistakes.  It is difficult to use so there is <a id="algebraToolTutorialLink" href="#">a tutorial video</a> about it.  A website version of <i>Algebra Tool</i> is available here: <a href="https://winkelmantanner.github.io/algebratool/">https://winkelmantanner.github.io/algebratool/</a>.</p>
+            <div id="main">
+                <p>Bobandtanner Software develops mobile apps.  Currently, we have 3 mobile apps:</p>
+                <ul>
+                    <li>Square Feet Calculation Utility (iOS only)</li>
+                    <li>Triangle Help (iOS only)</li>
+                    <li>Algebra Tool (<a href="https://winkelmantanner.github.io/algebratool/">web</a>, <a href="https://apps.apple.com/app/apple-store/id1489533838?pt=118312108&ct=bobandtanner.github.io_1&mt=8">iOS</a>, and <a href="https://play.google.com/store/apps/details?id=com.algebratoolmobile">Android</a>)</li>
+                </ul>
+                <p><i>Square Feet Calculation Utility</i> is by far the most popular.  As of February 1, 2021, a new version of <i>Square Feet Calculation Utility</i> is under development.  The old version, 1.1, was developed in 2016.  It is crashing on iOS 14.2.  The new version of <i>Square Feet Calculation Utility</i> is written completely from scratch and will be different from the old version.</p>
+                <p><i>Triangle Help</i> is a triangle solver which was developed in 2016 following <i>Square Feet Calculation Utility</i>.  It does not calculate area and it is not designed to complement <i>Square Feet Calculation Utility</i>.</p>
+                <p><i>Algebra Tool</i> is a human-driven computer algegra system.  It lets the human make decisions but it does not allow mistakes.  It is difficult to use so there is <a id="algebraToolTutorialLink" href="#">a tutorial video</a> about it.  A website version of <i>Algebra Tool</i> is available here: <a href="https://winkelmantanner.github.io/algebratool/">https://winkelmantanner.github.io/algebratool/</a>.</p>
+            </div>
         </div>
         <div class="container" id="contactUs">
+            <h2>Contact Us</h2>
             If you are human, you are allowed to have our email address.
             Demonstrate your humanness by typing the common name of your species in this box.
             Then press the button.
@@ -106,6 +112,7 @@
             <div id="emailOutput"></div>
         </div>
         <div class="container" id="sqftCalcContent">
+            <h2>Square Feet Calculation Utility</h2>
             <p>Square Feet Calculation Utility is a specialized calculator for floor area in square feet.  The user enters numerous rectangles in feet and inches and the app calculates the area.  A web version of the app is available at <a href="https://squarefeetcalculator.neocities.org">https://squarefeetcalculator.neocities.org</a>, but it is much cheaper than the iOS app.</p>
             <p>Unlike our other apps, this app is heavily used.  It makes about 50 app units per day.  It has received some reviews on the app store.  After this app had been on the store for 5 years, iOS 14.2 came out and this app crashes immediately when opened on iOS 14.2.  We received feedback from a user regarding the app crashing on the new iOS.  So we have developed a new version that will probably be released by the end of February 2021.</p>
             <a href="https://apps.apple.com/app/apple-store/id1132997142?pt=118312108&ct=sqftCalc_github_1&mt=8" style="text-decoration: none;">
