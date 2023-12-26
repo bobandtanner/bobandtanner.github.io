@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="keywords" content="floor,building,square,feet,foot,ft,area,calculator,calculate,inch,inches,in">
+<meta name="description" content="Floor square feet calculation utility.">
+<meta name="author" content="Tanner Winkelman">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Square Feet Calculator Utility</title>
+
+
+<style type="text/css">
+
+body
+{
+	margin-top: 1px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 1px;
+}
+
+p
+{
+	font-size: 17pt;
+	font-family: serif;
+}
+
+input, button, text
+{
+	font-size: 17pt;
+}
+
+div
+{
+	height: auto;
+}
+
+#instructionsContainer
+{
+	margin-left: 5px;
+}
+
+#sum
+{
+	font-size: 20pt;
+}
+
+form
+{
+	font-size: 15pt;
+	font-family: helvetica;
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+
+var rectNumber = 0;
+
+function newRectangle()
+{
+	var newCode = "";
+
+	const sq = "'";
+	const dq = '"';
+
+	newCode = newCode + "<br><input type='text' id='rectangle" + String(rectNumber) + "d1ft' size='4'><span style='font-size: 20pt;'>" + sq + "</span>";
+	newCode = newCode + "<input type='text' id='rectangle" + String(rectNumber) + "d1in' size='2'><span style='font-size: 20pt;'>" + dq + "</span>";
+	newCode = newCode + "X <wbr><input type='text' id='rectangle" + String(rectNumber) + "d2ft' size='4'><span style='font-size: 20pt;'>" + sq + "</span>";
+	newCode = newCode + "<input type='text' id='rectangle" + String(rectNumber) + "d2in' size='2'><span style='font-size: 20pt;'>" + dq + "</span>";
+	newCode = newCode + " = <span id='rectangle" + String(rectNumber) + "a'>0.00</span>ft<sup>2</sup>";
+	
+		
+	rectNumber = rectNumber + 1;
+	var container = document.createElement("div");
+	container.innerHTML = newCode;
+	document.getElementById("formOfRectangles").appendChild(container);
+}
+
+function mult( rectNum )
+{
+	var d1 = Number( document.getElementById("rectangle" + String(rectNum) + "d1ft").value ) + Number( Number( document.getElementById("rectangle" + String(rectNum) + "d1in").value ) / 12 );
+	var d2 = Number( document.getElementById("rectangle" + String(rectNum) + "d2ft").value ) + Number( Number( document.getElementById("rectangle" + String(rectNum) + "d2in").value ) / 12 );
+
+	document.getElementById("rectangle" + String(rectNum) + "a").innerHTML = String( (d1 * d2).toFixed(2) );
+}
+
+function add()
+{	
+	var s = 0;
+	
+	for( k=0; k<rectNumber; k++ )
+	{
+		s = s + Number( document.getElementById("rectangle" + String(k) + "a").innerHTML );
+	}
+	
+	document.getElementById("sum").innerHTML = String( s.toFixed(2) );
+}
+
+
+setInterval( function(){ for( k=0; k<rectNumber; k=k+1 ){ mult( k ); } add(); }, 1000);
+
+
+</script>
+
+</head>
+<body>
+
+<div style="background: white;">
+
+<center>
+
+<div id="instructionsContainer">
+<p align="left">
+	This is a utility for calculating the square feet of floor area in a building.  <br><br>The floor area must be broken into rectangles.  Add rectangles to the calculation by clicking the Add Rectangle button.  Enter the dimensions for each rectangle in feet and inches.  Every second, the calculation is run on the numbers present.  The sum is displayed at the bottom.
+</p>
+</div>
+
+<form>
+
+<input type="button" name="newRectangleButton" value="Add Rectangle" onClick="newRectangle();">
+
+</form>
+
+<hr width="90%">
+
+<form id="formOfRectangles">
+
+</form>
+
+<hr width="90%">
+
+<form>
+Sum:
+<span id="sum">0.00</span>
+ft<sup>2</sup>
+</form>
+
+<br>
+
+</center>
+
+</div>
+
+</body>
+
+</html> 
